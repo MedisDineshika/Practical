@@ -10,24 +10,30 @@ import org.springframework.stereotype.Service;
 
 import com.example.practical.dao.EmployeeDao;
 import com.example.practical.model.Employee;
+import com.example.practical.model.Telephone;
 
 @Service
 @Transactional
-public class EmployeeService{
+public class EmployeeService {
 
-	
 	@Autowired
-	EmployeeDao employeeDao ;
+	EmployeeDao employeeDao;
+
 	public List<Employee> getAllEmployees() {
-		
-		List<Employee>employees = new ArrayList<>();    
-		employeeDao.findAll().forEach(employees::add);    
-		return employees;  
+
+		List<Employee> employees = new ArrayList<>();
+		employeeDao.findAll().forEach(employees::add);
+		return employees;
 	}
 
 	public void addEmployee(Employee employee) {
 		employeeDao.save(employee);
-		
+
+	}
+
+	public void addTel(Telephone telephone) {
+		// TODO Auto-generated method stub
+
 	}
 
 }
