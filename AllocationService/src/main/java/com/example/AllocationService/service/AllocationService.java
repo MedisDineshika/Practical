@@ -7,7 +7,7 @@ import com.example.AllocationService.model.Allocation;
 
 public interface AllocationService {
 
-	void saveAllocation(Allocation allocation);
+	Allocation saveAllocation(Allocation allocation);
 
 	Allocation findAllocationById(Integer id);
 

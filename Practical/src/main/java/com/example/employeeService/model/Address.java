@@ -1,37 +1,31 @@
-package com.example.practical.model;
+package com.example.employeeService.model;
 
 import javax.persistence.Entity;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.OneToOne;
 
 @Entity
-public class Telephone {
+public class Address {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 
-	private Integer num;
+	private String city;
 
-	@ManyToOne
-	@JsonIgnore
-	@JoinColumn(name = "empid")
+	@OneToOne(mappedBy = "address")
 	private Employee employee;
 
-	public Telephone() {
+	public Address() {
 
 	}
 
-	public Telephone(Integer id, Integer num, Employee employee) {
+	public Address(Integer id, String city, Employee employee) {
 		super();
 		this.id = id;
-		this.num = num;
+		this.city = city;
 		this.employee = employee;
 	}
 
@@ -43,12 +37,12 @@ public class Telephone {
 		this.id = id;
 	}
 
-	public Integer getNum() {
-		return num;
+	public String getCity() {
+		return city;
 	}
 
-	public void setNum(Integer num) {
-		this.num = num;
+	public void setCity(String city) {
+		this.city = city;
 	}
 
 	public Employee getEmployee() {

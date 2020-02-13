@@ -1,4 +1,4 @@
-package com.example.practical.service;
+package com.example.employeeService.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,9 +8,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.practical.dao.TelephoneDao;
-
-import com.example.practical.model.Telephone;
+import com.example.employeeService.dao.TelephoneDao;
+import com.example.employeeService.model.Telephone;
 
 @Service
 @Transactional()

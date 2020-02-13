@@ -1,4 +1,4 @@
-package com.example.practical.model;
+package com.example.employeeService.model;
 
 import java.util.List;
 
@@ -10,7 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -31,11 +32,15 @@ public class Employee {
 	@OneToMany(mappedBy = "employee")
 	private List<Telephone> telephones;
 
-	// @ManyToMany(cascade = CascadeType.ALL)
-	// @JoinTable(name="project_employee",
-	// joinColumns= @JoinColumn (name="eid", referencedColumnName="id"),
-	// inverseJoinColumns=@JoinColumn(name="pid",referencedColumnName="id"))
-	// List<Project>projects;
+	@ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "EmployeeProjects",
+            joinColumns=
+            @JoinColumn(name="emp_ID", referencedColumnName="ID"),
+            inverseJoinColumns=
+            @JoinColumn(name="prj_ID", referencedColumnName="ID")
+    )
+    List<Project> projects;
 
 	public List<Telephone> getTelephones() {
 		return telephones;
