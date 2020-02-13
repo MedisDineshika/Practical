@@ -32,37 +32,17 @@ public class Employee {
 	@OneToMany(mappedBy = "employee")
 	private List<Telephone> telephones;
 
-	@ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "EmployeeProjects",
-            joinColumns=
-            @JoinColumn(name="emp_ID", referencedColumnName="ID"),
-            inverseJoinColumns=
-            @JoinColumn(name="prj_ID", referencedColumnName="ID")
-    )
-    List<Project> projects;
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "EmployeeProjects", joinColumns = @JoinColumn(name = "emp_ID", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "prj_ID", referencedColumnName = "id"))
+	List<Project> projects;
 
-	public List<Telephone> getTelephones() {
-		return telephones;
-	}
-
-	public void setTelephones(List<Telephone> telephones) {
-		this.telephones = telephones;
-	}
-
-	public Employee(long id, String name, Address address, List<Telephone> telephones) {
+	public Employee(long id, String name, Address address, List<Telephone> telephones, List<Project> projects) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.address = address;
 		this.telephones = telephones;
-	}
-
-	public Employee(long id, String name, Address address) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.address = address;
+		this.projects = projects;
 	}
 
 	public Employee() {
@@ -91,6 +71,22 @@ public class Employee {
 
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+
+	public List<Telephone> getTelephones() {
+		return telephones;
+	}
+
+	public void setTelephones(List<Telephone> telephones) {
+		this.telephones = telephones;
+	}
+
+	public List<Project> getProjects() {
+		return projects;
+	}
+
+	public void setProjects(List<Project> projects) {
+		this.projects = projects;
 	}
 
 }
