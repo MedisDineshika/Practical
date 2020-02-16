@@ -23,8 +23,6 @@ public class Project {
 
 	String name;
 
-	
-
 	public int getId() {
 		return Id;
 	}

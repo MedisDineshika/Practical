@@ -14,6 +14,12 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import com.example.AllocationService.model.Allocation;
 
 @Entity
 public class Employee {
@@ -21,39 +27,52 @@ public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 
-	private long id;
+	private Integer id;
 
 	private String name;
 
+	private int marks;
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "address_id")
 	private Address address;
 
-	@OneToMany(mappedBy = "employee")
+	@OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Telephone> telephones;
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "EmployeeProjects", joinColumns = @JoinColumn(name = "emp_ID", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "prj_ID", referencedColumnName = "id"))
+	@ManyToMany(cascade = CascadeType.ALL)
+	@Fetch(value = FetchMode.SELECT)
+	@JoinTable(name = "EmployeeProjects", joinColumns = {
+			@JoinColumn(name = "emp_ID", referencedColumnName = "id") }, inverseJoinColumns = {
+					@JoinColumn(name = "prj_ID", referencedColumnName = "id") })
+
 	List<Project> projects;
 
-	public Employee(long id, String name, Address address, List<Telephone> telephones, List<Project> projects) {
+	@Transient
+	Allocation[] allocations;
+
+	public Allocation[] getAllocations() {
+		return allocations;
+	}
+
+	public Employee() {
+	}
+
+	public Employee(Integer id, String name, int marks, Address address, List<Telephone> telephones,
+			List<Project> projects) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.marks = marks;
 		this.address = address;
 		this.telephones = telephones;
 		this.projects = projects;
 	}
 
-	public Employee() {
-
-	}
-
-	public long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -63,6 +82,14 @@ public class Employee {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public int getMarks() {
+		return marks;
+	}
+
+	public void setMarks(int marks) {
+		this.marks = marks;
 	}
 
 	public Address getAddress() {
@@ -87,6 +114,10 @@ public class Employee {
 
 	public void setProjects(List<Project> projects) {
 		this.projects = projects;
+	}
+
+	public void setAllocations(Allocation[] allocations) {
+		this.allocations = allocations;
 	}
 
 }

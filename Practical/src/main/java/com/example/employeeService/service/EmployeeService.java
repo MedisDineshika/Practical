@@ -6,15 +6,10 @@ import com.example.employeeService.model.Employee;
 
 public interface EmployeeService {
 
+	Employee add(Employee employee);
+
+	Employee fethAllAllocationsByID(Integer id);
+
 	List<Employee> getAllEmployees();
-
-	void addEmployee(Employee employee);
-
-	Employee getEmployeeById(int id);
-	
-	
-	
-	
-	
 
 }

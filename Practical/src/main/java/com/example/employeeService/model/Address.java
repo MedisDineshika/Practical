@@ -22,11 +22,10 @@ public class Address {
 
 	}
 
-	public Address(Integer id, String city, Employee employee) {
+	public Address(Integer id, String city) {
 		super();
 		this.id = id;
 		this.city = city;
-		this.employee = employee;
 	}
 
 	public Integer getId() {

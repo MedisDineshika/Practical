@@ -1,4 +1,4 @@
-package com.example.AllocationService.model;
+package com.example.employeeService.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,6 +18,8 @@ public class Allocation {
 	private String name;
 
 	private String projectName;
+
+	Allocation Allocation[];
 
 	public Allocation() {
 
@@ -61,6 +63,14 @@ public class Allocation {
 
 	public void setProjectName(String projectName) {
 		this.projectName = projectName;
+	}
+
+	public Allocation[] getAllocation() {
+		return Allocation;
+	}
+
+	public void setAllocation(Allocation[] allocation) {
+		Allocation = allocation;
 	}
 
 }

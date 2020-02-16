@@ -14,26 +14,19 @@ import com.example.AllocationService.model.Allocation;
 @Transactional
 public class AllocationServiceImpl implements AllocationService {
 
-	 @Autowired
-	 
-	 AllocationDao allocationDao ;
+	@Autowired
+
+	AllocationDao allocationDao;
+
 	@Override
 	public Allocation saveAllocation(Allocation allocation) {
-		 return allocationDao.save(allocation);
+		return allocationDao.save(allocation);
 
-		
 	}
 
 	@Override
-	public Allocation findAllocationById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Allocation> fetchAllAllocations() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Allocation> findAllocationsByEid(Integer id) {
+		return allocationDao.findAll();
 	}
 
 }
