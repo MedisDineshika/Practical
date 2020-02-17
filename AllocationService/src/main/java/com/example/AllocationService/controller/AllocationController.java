@@ -28,7 +28,7 @@ public class AllocationController {
 		allocationService.saveAllocation(allocation);
 	}
 
-	@RequestMapping(value = "/findAllocationById/{id}", method = RequestMethod.POST)
+	@RequestMapping(value = "/findAllocationById/{id}", method = RequestMethod.GET)
 	public List<Allocation> allocations(@PathVariable Integer id) {
 		List<Allocation> allocation = allocationService.findAllocationsByEid(id);
 		return allocation;

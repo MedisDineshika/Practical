@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 //import org.springframework.web.bind.annotation.PathVariable;
 //import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 //import org.springframework.web.bind.annotation.RequestMethod;
 //import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,12 +36,12 @@ public class EmployeeContoller {
 		return employeeService.getAllEmployees();
 	}
 
-	@RequestMapping("/add")
+	@RequestMapping(value ="/add", method = RequestMethod.POST)
 	public Employee addAllEmployees(@RequestBody Employee employee) {
 		return employeeService.add(employee);
 	}
 
-	@RequestMapping("/employee/{id}")
+	@RequestMapping(value ="/employee/{id}", method = RequestMethod.GET)
 	public Employee getByID(@PathVariable Integer id) {
 		return employeeService.fethAllAllocationsByID(id);
 	}
