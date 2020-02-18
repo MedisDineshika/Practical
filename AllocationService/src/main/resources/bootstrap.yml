@@ -1,9 +1,15 @@
-server:
-  port: 9033
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
+
+    
 spring:
   application:
-    name: allocation
+    name: allocationService
+
+server:
+  port: 9033
+
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    
